@@ -1,26 +1,31 @@
-﻿using System;
+using System;
 
-namespace mario
+namespace Botellas
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.Write("Altura de la piramide: ");
-            int niveles;
-            /// Tryparse convierte la representación de una cadena (string) a su equivalente entero (int). Un valor devuelto indica si la conversión tuvo éxito.
-            //  devuelve 0 si no se pudo convertir
-            int.TryParse( Console.ReadLine(), out niveles);
-
-             dibujarPiramide(niveles);
-
-        }
-        //Todo el código va aquí 2
-        // Este ejemplo es por Carlos
-        static void dibujarPiramide(int niveles){
-            //Aquí va todo
-            
-            
+            int Altura, Mínimo, Espacio, Bloque;
+            Console.WriteLine ("¿Cuál es la altura a la que deseas la torre? (Límite de mínimo de 1 y máximo de 23)");
+            Altura = Convert.ToInt32 (Console.ReadLine());
+            while (Altura > 23 || Altura < 1)
+            {
+                Console.WriteLine ("Intenta otro número dentro el límite");
+                int.TryParse (Console.ReadLine (), out Altura);
+            }
+            for (Mínimo = 1; Mínimo <= Altura; Mínimo++)
+            {
+                for (Espacio = (Altura - Mínimo); Espacio > 0; Espacio--)
+                {
+                    Console.Write (" ");
+                }
+                for (Bloque = 1; Bloque <= 2 * Mínimo; Bloque++)
+                {
+                    Console.Write ("#");
+                }
+                Console.WriteLine ();
+            }
         }
     }
 }
